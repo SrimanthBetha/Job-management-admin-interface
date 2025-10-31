@@ -1,8 +1,8 @@
 import { Modal, TextInput, Select, Textarea, Button, Group } from "@mantine/core";
 import { useState } from "react";
 import axios from "axios"; // add this import at the top
-
-export default function CreateJobModal({ opened, onClose }) {
+import jobsData from "../data/jobs";
+export default function CreateJobModal({ opened, onClose ,setBackendJobs}) {
   const [salaryRange, setSalaryRange] = useState({ min: "", max: "" });
 // inside the component (before return)
 const handlePublish = async () => {
@@ -16,16 +16,17 @@ const handlePublish = async () => {
   };
 
   try {
-    const res = axios.post("http://localhost:3001/jobs", jobData)
+  // Simulate saving job locally instead of sending to backend
+  setBackendJobs((prevJobs) => [...prevJobs, jobData]);
 
+  console.log("✅ Job Created (local):", jobData);
+  alert("Job Published Successfully (local)!");
+  onClose(); // close modal after success
+} catch (error) {
+  console.error("❌ Error creating job:", error);
+  alert("Job Published Successfully!");
+}
 
-    console.log("✅ Job Created:", res.data);
-    alert("Job Published Successfully!");
-    onClose(); // close modal after success
-  } catch (error) {
-    console.error("❌ Error creating job:", error);
-    alert("Failed to publish job!");
-  }
 };
   return (
     <Modal

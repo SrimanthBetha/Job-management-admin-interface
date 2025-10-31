@@ -1,6 +1,6 @@
 import React from "react";
 import { MantineProvider } from "@mantine/core";
-import Navbar from "./components/Navbar";
+import Navbar from "../src/components/Navbar";
 import JobListPage from "./pages/JobListPage";
 
 function App() {

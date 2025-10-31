@@ -1,15 +1,15 @@
-import JobFilterBar from "../components/JobFilterBar";
+import JobFilterBar from "../../src/components/JobFilterBar";
 //
 //
 // src/pages/JobListPage.js
 import React, { useState } from "react";
 import { useEffect } from "react";
 import axios from "axios";
-import Navbar from "../components/Navbar";
+import Navbar from "../../src/components/Navbar";
 import { TextInput, Select, RangeSlider } from "@mantine/core";
-import JobCard from "../components/JobCard";
-import CreateJobModal from "../components/CreateJobModal"; 
-
+import JobCard from "../../src/components/JobCard";
+import CreateJobModal from "../../src/components/CreateJobModal"; 
+import jobsData from "../data/jobs";
 export default function JobListPage() {
   const [filters, setFilters] = useState({
     title: "",
@@ -98,17 +98,9 @@ export default function JobListPage() {
     const [backendJobs, setBackendJobs] = useState([]);
 
   useEffect(() => {
-    const fetchJobs = async () => {
-      try {
-        const res = await axios.get("http://localhost:3000/jobs");
-        setBackendJobs(res.data);
-      } catch (err) {
-        console.error("❌ Error fetching jobs:", err);
-      }
-    };
+  setBackendJobs(jobsData);
+}, []);
 
-    fetchJobs();
-  }, []);
 
 
   return (
