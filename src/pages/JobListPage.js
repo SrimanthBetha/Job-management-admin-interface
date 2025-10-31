@@ -100,7 +100,7 @@ export default function JobListPage() {
   useEffect(() => {
     const fetchJobs = async () => {
       try {
-        const res = await axios.get("http://localhost:3001/jobs");
+        const res = await axios.get("http://localhost:3000/jobs");
         setBackendJobs(res.data);
       } catch (err) {
         console.error("❌ Error fetching jobs:", err);

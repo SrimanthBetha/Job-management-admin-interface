@@ -1,8 +1,15 @@
 import { Injectable } from '@nestjs/common';
 
 @Injectable()
-export class AppService {
-  getHello(): string {
-    return 'Hello World!';
+export class JobsService {
+  private jobs = [];
+
+  findAll() {
+    return this.jobs;
+  }
+
+  create(jobData) {
+    this.jobs.push(jobData);
+    return { message: 'Job published successfully', job: jobData };
   }
 }
