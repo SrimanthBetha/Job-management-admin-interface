@@ -32,5 +32,3 @@ Frontend	Next.js, React Hook Form, Mantine, Axios
 Backend	NestJS, TypeORM, PostgreSQL
 Tools	Git, Prettier, ESLint
 Deployment	Vercel (Frontend), Render / Railway (Backend)
-📂 Folder Structure
-job-management/
