@@ -1,13 +1,87 @@
-body {
+html,
+body,
+#root {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  padding: 0;
+  width: 100%;
+  overflow-x: hidden;
+}
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+/* hide native select arrows for elements with .select-no-arrow */
+.select-no-arrow select,
+.select-no-arrow .mantine-NativeSelect-root {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background-image: none !important;
+  padding-right: 0.75rem; /* keep text spacing */
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+/* for good measure, hide any svg inside this container (safety net) */
+.job-filter-bar .mantine-Select svg,
+.job-filter-bar .mantine-NativeSelect-root svg {
+  display: none !important;
 }
+/* 🧹 Completely hide the dropdown arrows in Mantine Select */
+.mantine-Select-input::after {
+  display: none !important;
+}
+.mantine-Select-input {
+  background-image: none !important;
+  padding-right: 0 !important;
+}
+/* 🚫 Force-remove Mantine Select dropdown arrows completely */
+.mantine-Select-section,
+.mantine-Select-chevron,
+.mantine-Select-wrapper svg {
+  display: none !important;
+  visibility: hidden !important;
+  width: 0 !important;
+  height: 0 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+/* 🧩 Tighten up input padding after arrow removal */
+.mantine-Select-input {
+  padding-right: 0.75rem !important;
+}
+/* force Mantine RangeSlider thumb and track to align from left edge */
+.mantine-RangeSlider-root {
+  justify-content: flex-start !important;
+  align-items: flex-start !important;
+}
+
+.mantine-RangeSlider-track {
+  margin-left: 0 !important;
+}
+
+.mantine-RangeSlider-bar {
+  left: 0 !important;
+}
+/* Force gray color for time text */
+.job-time {
+  color: #171717 !important; /* Tailwind gray-400 */
+}
+/* Force Mantine RangeSlider thumbs to be pure black */
+.mantine-RangeSlider-thumb {
+  background-color: #000000 !important;
+  border: 2px solid #000000 !important;
+  box-shadow: none !important;
+}
+/* Force Mantine RangeSlider thumbs to pure black */
+div[class*="mantine-RangeSlider-thumb"] {
+  background-color: #000000 !important;
+  border: 2px solid #000000 !important;
+  box-shadow: none !important;
+}
+
+/* Optional: make the active thumb stay black even when focused or hovered */
+div[class*="mantine-RangeSlider-thumb"]:hover,
+div[class*="mantine-RangeSlider-thumb"]:focus,
+div[class*="mantine-RangeSlider-thumb"][data-active] {
+  background-color: #000000 !important;
+  border-color: #000000 !important;
+}
+
